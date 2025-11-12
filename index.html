@@ -1,197 +1,184 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Logan <3</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Logan</title>
   <style>
-    @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap");
+    /* Fonts */
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
 
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    /* Reset */
+    *{box-sizing:border-box;margin:0;padding:0}
 
-    body {
-      height: 100vh;
+    /* Page */
+    html,body{
+      height:100%;
       background: radial-gradient(circle at center, #ff5d8f 10%, #140014 90%);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      color: #fff;
       font-family: "Montserrat", sans-serif;
-      overflow: hidden;
-      text-align: center;
+      color:#fff;
     }
 
-    .intro-container {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 20px;
-      animation: fadeIn 2s ease-in-out;
+    /* Outer wrapper keeps things centered and prevents squashing */
+    .stage {
+      min-height:100vh;                 /* always fill viewport */
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:4vh 5vw;                  /* breathing room on small screens */
+      text-align:center;
     }
 
-    .overlay-text {
-      font-size: 2.8rem;
-      font-weight: 700;
-      color: #fff;
+    /* Main column that NEVER squashes items */
+    .card {
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      gap: clamp(12px, 2.5vh, 28px);   /* responsive spacing between items */
+      width: min(900px, 92vw);          /* keeps content centered and constrained */
+      margin-inline:auto;
+      padding: 2vh 2vw;
+      /* allow the card room to breathe — no shrinking of children */
+    }
+
+    /* Title */
+    .title{
+      font-weight:700;
+      font-size: clamp(28px, 5.2vw, 48px); /* responsive size */
+      line-height:1;
       text-shadow: 0 0 15px #ff90b5, 0 0 30px #ff5d8f;
-      animation: slideDown 1.2s ease-in-out;
+      margin-top: 2vh;
     }
 
+    /* PFP: never shrinks, always keeps aspect */
     .pfp {
-      width: 220px;
-      height: 220px;
-      border-radius: 50%;
-      border: 4px solid #fff;
-      object-fit: cover;
-      box-shadow: 0 0 30px rgba(255, 90, 150, 0.7);
-      animation: zoomIn 1.5s ease-in-out;
-      transition: all 0.3s ease-in-out;
+      width: clamp(160px, 22vw, 260px);
+      height: auto;                     /* let width govern height */
+      aspect-ratio: 1/1;
+      border-radius:50%;
+      border:4px solid #fff;
+      object-fit:cover;
+      box-shadow: 0 0 30px rgba(255,90,150,0.7);
+      flex-shrink:0;                    /* crucial — prevents squashing */
+      transition: transform .28s ease, box-shadow .28s ease;
     }
+    .pfp:hover{ transform: scale(1.03); box-shadow:0 0 40px rgba(255,90,150,1); }
 
-    .pfp:hover {
-      box-shadow: 0 0 40px rgba(255, 90, 150, 1);
-      transform: scale(1.03);
-    }
-
-    #playButton {
-      background: rgba(255, 93, 143, 0.9);
-      border: none;
-      color: white;
-      padding: 10px 25px;
-      border-radius: 25px;
-      font-size: 1rem;
-      cursor: pointer;
-      box-shadow: 0 0 15px #ff5d8f;
-      opacity: 0;
-      display: none;
-      transition: opacity 0.5s ease, transform 0.3s ease;
-    }
-
-    #playButton.show {
-      display: inline-block;
-      opacity: 1;
-    }
-
-    #playButton:hover {
-      background: rgba(255, 93, 143, 1);
-      transform: scale(1.05);
-    }
-
+    /* Quote + credits */
     .quote {
-      font-size: 1.2rem;
+      font-size: clamp(14px, 2.2vw, 20px);
       color: #ffeaf1;
       text-shadow: 0 0 8px #ff99c4;
-      animation: fadeInUp 1.2s ease-in-out;
-      max-width: 90%;
+      max-width: 760px;
+      margin-top: 0.5vh;
     }
-
     .credits {
-      margin-top: 10px;
-      font-size: 0.9rem;
-      color: rgba(255, 255, 255, 0.6);
+      color: rgba(255,255,255,0.65);
+      font-size: clamp(12px, 1.6vw, 15px);
     }
 
-    @keyframes fadeIn {
-      from {
-        opacity: 0;
-      }
-      to {
-        opacity: 1;
-      }
+    /* Fixed play button in bottom-left so it never overlaps center content */
+    #playButton {
+      position: fixed;
+      left: 18px;
+      bottom: 18px;
+      z-index: 50;
+      background: rgba(255,93,143,0.92);
+      border: none;
+      color: white;
+      padding: 12px 18px;
+      border-radius: 12px;
+      font-size: 14px;
+      cursor: pointer;
+      box-shadow: 0 8px 24px rgba(10,10,10,0.25), 0 0 15px rgba(255,93,143,0.6);
+      opacity: 0;
+      transform: translateY(6px);
+      transition: opacity .45s ease, transform .28s ease;
     }
+    #playButton.show { opacity:1; transform: translateY(0); }
+    #playButton:hover { transform: translateY(-3px) scale(1.02); }
 
-    @keyframes zoomIn {
-      from {
-        transform: scale(0.6);
-      }
-      to {
-        transform: scale(1);
-      }
-    }
-
-    @keyframes slideDown {
-      from {
-        transform: translateY(-30px);
-        opacity: 0;
-      }
-      to {
-        transform: translateY(0);
-        opacity: 1;
-      }
-    }
-
-    @keyframes fadeInUp {
-      from {
-        opacity: 0;
-        transform: translateY(20px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+    /* Small screens: slightly reduce spacing */
+    @media (max-width:420px){
+      .card{ gap:14px; padding: 2vh 3vw; }
+      .title{ margin-top:1vh; }
     }
   </style>
 </head>
 <body>
-  <div class="intro-container">
-    <div class="overlay-text">Logan</div>
-    <img class="pfp" id="pfp" alt="Logan's PFP" />
-    <button id="playButton">▶ Play Music</button>
-    <div class="credits">Proud Owner of VentureLink</div>
-    <p class="quote" id="quote"></p>
+  <div class="stage">
+    <div class="card" role="main" aria-labelledby="title">
+      <div id="title" class="title">Logan</div>
+
+      <!-- Profile image: never squashed due to flex-shrink:0 and aspect-ratio -->
+      <img id="pfp" class="pfp" alt="Logan's profile picture" />
+
+      <!-- Credits & quote: centered and below image, won't push image up -->
+      <div class="credits">Proud Owner of VentureLink</div>
+      <p id="quote" class="quote" aria-live="polite"></p>
+    </div>
   </div>
 
-  <script>
-    const PFP_CDN =
-      "https://cdn.discordapp.com/attachments/1437017654841049274/1438152045885394994/image.png";
-    const MUSIC_CDN =
-      "https://cdn.discordapp.com/attachments/1437017654841049274/1438152084670251138/Juice_WRLD_-_Flaws_and_Sins_Official_Audio-yt.savetube.me.mp3";
+  <!-- Fixed music play button (bottom-left): safe from overlapping -->
+  <button id="playButton" aria-pressed="false">▶ Play Music</button>
 
+  <script>
+    // ---------- CONFIG ----------
+    const PFP_CDN = "https://cdn.discordapp.com/attachments/1437017654841049274/1438152045885394994/image.png";
+    const MUSIC_CDN = "https://cdn.discordapp.com/attachments/1437017654841049274/1438152084670251138/Juice_WRLD_-_Flaws_and_Sins_Official_Audio-yt.savetube.me.mp3";
     const quotes = [
       "She ripped my heart out.",
       "We’re gonna build a wall.",
-      "The only thing we have to fear is fear itself.",
+      "The only thing we have to fear is fear itself."
     ];
+    // ----------------------------
 
-    document.getElementById("pfp").src = PFP_CDN;
-    document.getElementById("quote").textContent =
-      quotes[Math.floor(Math.random() * quotes.length)];
+    // Put PFP and a random quote
+    document.getElementById('pfp').src = PFP_CDN;
+    document.getElementById('quote').textContent = quotes[Math.floor(Math.random()*quotes.length)];
 
-    const bgMusic = new Audio(MUSIC_CDN);
-    bgMusic.loop = true;
-    bgMusic.volume = 0;
+    // Audio (with fade-in)
+    const bg = new Audio(MUSIC_CDN);
+    bg.loop = true;
+    bg.volume = 0;
 
-    function fadeInAudio(audio, targetVolume = 0.5, duration = 4000) {
-      const step = targetVolume / (duration / 100);
-      const fade = setInterval(() => {
-        if (audio.volume < targetVolume) {
-          audio.volume = Math.min(audio.volume + step, targetVolume);
-        } else {
-          clearInterval(fade);
-        }
-      }, 100);
+    function fadeInAudio(audio, target=0.45, duration=3500){
+      const steps = Math.max(6, Math.round(duration/120));
+      const step = target / steps;
+      let i = 0;
+      const t = setInterval(()=>{
+        i++;
+        audio.volume = Math.min(target, +(audio.volume + step).toFixed(3));
+        if(i >= steps) clearInterval(t);
+      }, duration/steps);
     }
 
-    bgMusic
-      .play()
-      .then(() => fadeInAudio(bgMusic))
-      .catch(() => {
-        const btn = document.getElementById("playButton");
-        btn.style.display = "inline-block";
-        setTimeout(() => btn.classList.add("show"), 10);
-      });
+    const playBtn = document.getElementById('playButton');
 
-    document.getElementById("playButton").addEventListener("click", () => {
-      bgMusic.play();
-      fadeInAudio(bgMusic);
-      const btn = document.getElementById("playButton");
-      btn.classList.remove("show");
-      setTimeout(() => (btn.style.display = "none"), 500);
+    // Try autoplay; if blocked, show fixed bottom-left button
+    bg.play().then(()=>{
+      fadeInAudio(bg);
+    }).catch(()=>{
+      // show button smoothly
+      playBtn.classList.add('show');
+      playBtn.setAttribute('aria-hidden','false');
     });
+
+    // Button toggles playback and hides itself when pressed
+    playBtn.addEventListener('click', async ()=>{
+      try{
+        await bg.play();
+        fadeInAudio(bg);
+        playBtn.classList.remove('show');
+        playBtn.setAttribute('aria-hidden','true');
+      }catch(e){
+        console.warn('Playback failed:', e);
+      }
+    });
+
+    // Safety: if element sizes change unexpectedly, prevent image shrink
+    // (extra guard)
+    document.getElementById('pfp').style.flexShrink = '0';
   </script>
 </body>
 </html>
