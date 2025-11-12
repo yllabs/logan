@@ -1,12 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Logan <3</title>
   <style>
-    /* ✅ Clean import (removed unused JP font) */
-    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+    @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap");
 
     * {
       margin: 0;
@@ -20,15 +19,26 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      overflow: hidden;
       color: #fff;
-      font-family: 'Montserrat', sans-serif;
+      font-family: "Montserrat", sans-serif;
+      overflow: hidden;
+      text-align: center;
     }
 
     .intro-container {
-      position: relative;
-      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
       animation: fadeIn 2s ease-in-out;
+    }
+
+    .overlay-text {
+      font-size: 2.8rem;
+      font-weight: 700;
+      color: #fff;
+      text-shadow: 0 0 15px #ff90b5, 0 0 30px #ff5d8f;
+      animation: slideDown 1.2s ease-in-out;
     }
 
     .pfp {
@@ -42,43 +52,12 @@
       transition: all 0.3s ease-in-out;
     }
 
-    /* ✅ Subtle hover glow */
     .pfp:hover {
       box-shadow: 0 0 40px rgba(255, 90, 150, 1);
       transform: scale(1.03);
     }
 
-    .overlay-text {
-      position: absolute;
-      top: -80px;
-      left: 50%;
-      transform: translateX(-50%);
-      font-size: 2.5rem;
-      font-weight: 700;
-      color: #fff;
-      text-shadow: 0 0 15px #ff90b5, 0 0 30px #ff5d8f;
-      animation: slideDown 1.2s ease-in-out;
-    }
-
-    .quote {
-      margin-top: 25px;
-      font-size: 1.2rem;
-      color: #ffeaf1;
-      text-shadow: 0 0 8px #ff99c4;
-      animation: fadeInUp 1.2s ease-in-out;
-    }
-
-    .credits {
-      position: absolute;
-      bottom: 20px;
-      font-size: 0.9rem;
-      color: rgba(255,255,255,0.6);
-    }
-
-    /* ✅ Updated Play Button for fade-in animation */
     #playButton {
-      position: absolute;
-      bottom: 80px;
       background: rgba(255, 93, 143, 0.9);
       border: none;
       color: white;
@@ -102,62 +81,90 @@
       transform: scale(1.05);
     }
 
+    .quote {
+      font-size: 1.2rem;
+      color: #ffeaf1;
+      text-shadow: 0 0 8px #ff99c4;
+      animation: fadeInUp 1.2s ease-in-out;
+      max-width: 90%;
+    }
+
+    .credits {
+      margin-top: 10px;
+      font-size: 0.9rem;
+      color: rgba(255, 255, 255, 0.6);
+    }
+
     @keyframes fadeIn {
-      from {opacity: 0;}
-      to {opacity: 1;}
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
     }
 
     @keyframes zoomIn {
-      from {transform: scale(0.6);}
-      to {transform: scale(1);}
+      from {
+        transform: scale(0.6);
+      }
+      to {
+        transform: scale(1);
+      }
     }
 
     @keyframes slideDown {
-      from {transform: translate(-50%, -60px); opacity: 0;}
-      to {transform: translate(-50%, 0); opacity: 1;}
+      from {
+        transform: translateY(-30px);
+        opacity: 0;
+      }
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
     }
 
     @keyframes fadeInUp {
-      from {opacity: 0; transform: translateY(20px);}
-      to {opacity: 1; transform: translateY(0);}
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
-
   </style>
 </head>
 <body>
   <div class="intro-container">
     <div class="overlay-text">Logan</div>
-    <img class="pfp" id="pfp" alt="Logan's PFP">
-    <p class="quote" id="quote"></p>
+    <img class="pfp" id="pfp" alt="Logan's PFP" />
     <button id="playButton">▶ Play Music</button>
     <div class="credits">Proud Owner of VentureLink</div>
+    <p class="quote" id="quote"></p>
   </div>
 
   <script>
-    /** ---------- CONFIGURABLE CDN LINKS ---------- **/
-    const PFP_CDN = "https://cdn.discordapp.com/attachments/1437017654841049274/1438152045885394994/image.png";
-    const MUSIC_CDN = "https://cdn.discordapp.com/attachments/1437017654841049274/1438152084670251138/Juice_WRLD_-_Flaws_and_Sins_Official_Audio-yt.savetube.me.mp3";
-    /** -------------------------------------------- **/
+    const PFP_CDN =
+      "https://cdn.discordapp.com/attachments/1437017654841049274/1438152045885394994/image.png";
+    const MUSIC_CDN =
+      "https://cdn.discordapp.com/attachments/1437017654841049274/1438152084670251138/Juice_WRLD_-_Flaws_and_Sins_Official_Audio-yt.savetube.me.mp3";
 
     const quotes = [
       "She ripped my heart out.",
       "We’re gonna build a wall.",
-      "The only thing we have to fear is fear itself."
+      "The only thing we have to fear is fear itself.",
     ];
 
-    // Random quote
-    const randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
-    document.getElementById("quote").textContent = randomQuote;
-
-    // PFP
     document.getElementById("pfp").src = PFP_CDN;
+    document.getElementById("quote").textContent =
+      quotes[Math.floor(Math.random() * quotes.length)];
 
-    // Music setup
     const bgMusic = new Audio(MUSIC_CDN);
     bgMusic.loop = true;
-    bgMusic.volume = 0; // Start silent for fade-in
+    bgMusic.volume = 0;
 
-    // Fade in function
     function fadeInAudio(audio, targetVolume = 0.5, duration = 4000) {
       const step = targetVolume / (duration / 100);
       const fade = setInterval(() => {
@@ -169,21 +176,21 @@
       }, 100);
     }
 
-    // Try autoplay, otherwise show button smoothly
-    bgMusic.play().then(() => {
-      fadeInAudio(bgMusic);
-    }).catch(() => {
-      const btn = document.getElementById("playButton");
-      btn.style.display = "inline-block";
-      setTimeout(() => btn.classList.add("show"), 10);
-    });
+    bgMusic
+      .play()
+      .then(() => fadeInAudio(bgMusic))
+      .catch(() => {
+        const btn = document.getElementById("playButton");
+        btn.style.display = "inline-block";
+        setTimeout(() => btn.classList.add("show"), 10);
+      });
 
-    // Fallback manual play
     document.getElementById("playButton").addEventListener("click", () => {
       bgMusic.play();
       fadeInAudio(bgMusic);
-      document.getElementById("playButton").classList.remove("show");
-      setTimeout(() => document.getElementById("playButton").style.display = "none", 500);
+      const btn = document.getElementById("playButton");
+      btn.classList.remove("show");
+      setTimeout(() => (btn.style.display = "none"), 500);
     });
   </script>
 </body>
