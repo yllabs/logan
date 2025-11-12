@@ -15,12 +15,12 @@
         extend: {
           colors: {
             brand: {
-              DEFAULT: '#3aa3ff',
+              DEFAULT: '#ff0000',
               dark: '#0a1020',
             }
           },
           boxShadow: {
-            glow: '0 0 40px rgba(58,163,255,0.18)'
+            glow: '0 0 40px rgba(255,0,0,0.18)'
           },
           backgroundImage: {
             grid: 'radial-gradient(circle at 1px 1px, rgba(255,255,255,0.08) 1px, transparent 1px)',
@@ -32,16 +32,15 @@
   <style>
     .glow-bg {
       position: absolute; inset: -20% -20% auto -20%; height: 60vh;
-      background: radial-gradient(60% 60% at 20% 30%, rgba(58,163,255,0.18), transparent 60%),
-                  radial-gradient(50% 50% at 80% 10%, rgba(58,163,255,0.10), transparent 60%);
+      background: radial-gradient(60% 60% at 20% 30%, rgba(255,0,0,0.18), transparent 60%),
+                  radial-gradient(50% 50% at 80% 10%, rgba(255,0,0,0.10), transparent 60%);
       filter: blur(30px); pointer-events:none;
       animation: float 12s ease-in-out infinite alternate;
     }
     @keyframes float { from { transform: translateY(0)} to { transform: translateY(-20px)} }
     .hover-card { transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease; }
-    .hover-card:hover { transform: translateY(-4px); box-shadow: 0 10px 30px rgba(0,0,0,.4), 0 0 0 1px rgba(58,163,255,.25) inset; border-color: rgba(58,163,255,.4); }
-
-    /* Tailwind preflight + utilities (truncated for brevity; include full CSS in repo) */
+    .hover-card:hover { transform: translateY(-4px); box-shadow: 0 10px 30px rgba(0,0,0,.4), 0 0 0 1px rgba(255,0,0,.25) inset; border-color: rgba(255,0,0,.4); }
+    ::selection { background-color: rgba(255,0,0,0.3); }
   </style>
 </head>
 <body class="bg-brand-dark text-white/90 selection:bg-brand/30">
@@ -180,7 +179,7 @@
           </div>
         </div>
         <aside class="space-y-3 text-sm text-white/70">
-          <div class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-brand rounded-full"></span> Based on the East Coast (ET)</div>
+          <div class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-brand rounded-full"></span> I’m based in Alabama</div>
           <div class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-brand rounded-full"></span> Open to collaborations & commissions</div>
           <div class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-brand rounded-full"></span> Preferred stack: Python using disnake, JavaScript</div>
         </aside>
@@ -190,7 +189,7 @@
 
   <footer class="border-t border-white/10">
     <div class="max-w-6xl mx-auto px-4 py-8 text-sm text-white/60 flex flex-col sm:flex-row items-center justify-between gap-4">
-      <div> <span id="y">2025</span> YL labs | Made with <3 by Toga</div>
+      <div>Made with ❤️ by YL Labs</div>
       <div class="flex items-center gap-4">
         <a href="https://yllabs.xyz/" class="hover:text-white">Yllabs</a>
         <a href="#home" class="hover:text-white">Back to top</a>
