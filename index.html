@@ -1,128 +1,205 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Blue51410.dev</title>
-  <meta name="description" content="Hi im blue51410 I like to code!">
+  <meta name="description" content="Hello, my name is Logan. I am a small time developer and company owner with the passion of creating a fully functioning community based off of Clean and modern UI, technology, and software.">
   <meta name="theme-color" content="#3aa3ff">
 
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              DEFAULT: '#3aa3ff',
+              dark: '#0a1020',
+            }
+          },
+          boxShadow: {
+            glow: '0 0 40px rgba(58,163,255,0.18)'
+          },
+          backgroundImage: {
+            grid: 'radial-gradient(circle at 1px 1px, rgba(255,255,255,0.08) 1px, transparent 1px)',
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    .glow-bg {
+      position: absolute; inset: -20% -20% auto -20%; height: 60vh;
+      background: radial-gradient(60% 60% at 20% 30%, rgba(58,163,255,0.18), transparent 60%),
+                  radial-gradient(50% 50% at 80% 10%, rgba(58,163,255,0.10), transparent 60%);
+      filter: blur(30px); pointer-events:none;
+      animation: float 12s ease-in-out infinite alternate;
+    }
+    @keyframes float { from { transform: translateY(0)} to { transform: translateY(-20px)} }
+    .hover-card { transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease; }
+    .hover-card:hover { transform: translateY(-4px); box-shadow: 0 10px 30px rgba(0,0,0,.4), 0 0 0 1px rgba(58,163,255,.25) inset; border-color: rgba(58,163,255,.4); }
+
+    /* Tailwind preflight + utilities (truncated for brevity; include full CSS in repo) */
+  </style>
 </head>
-<section id="home" class="relative">
-  <div class="max-w-6xl mx-auto px-4 pt-14 pb-16 sm:pt-20 sm:pb-24">
-    <div class="grid md:grid-cols-2 items-center gap-10">
-      <div>
-        <h1 class="text-3xl sm:text-5xl md:text-6xl font-extrabold tracking-tight leading-tight text-white">
-          Hello, my name is <span class="text-brand">Logan</span>.
-        </h1>
-        <p class="mt-4 text-white/70 leading-relaxed">
-          I am a small time developer and company owner with the passion of creating a fully functioning community based off of Clean and modern UI, technology, and software.
-        </p>
-        <div class="mt-6 flex flex-wrap items-center gap-3">
-          <a href="#projects" class="rounded-xl px-4 py-2 bg-white text-black font-semibold hover:opacity-90">See Projects</a>
-        </div>
-        <div class="mt-6 flex items-center gap-4 text-sm text-white/60">
-          <div class="flex items-center gap-2">
-            <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-            <span>Building cool stuff</span>
-          </div>
-        </div>
-      </div>
-      <div class="relative flex items-center justify-center md:justify-end">
-        <div class="w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 rounded-2xl border border-white/20 ring-1 ring-white/10 shadow-glow overflow-hidden">
-          <img src="YOUR_PFP_URL" alt="Logan avatar" class="w-full h-full object-cover" onerror="this.style.display='none'">
-        </div>
-        <div class="absolute bottom-2 right-2 bg-brand/20 text-brand rounded-lg px-3 py-1.5 text-sm border border-brand/40">#JavaScript #Python</div>
-      </div>
-    </div>
+<body class="bg-brand-dark text-white/90 selection:bg-brand/30">
+
+  <div class="fixed inset-0 -z-10 pointer-events-none" aria-hidden="true">
+    <div class="absolute inset-0 opacity-[0.08]" style="background-size: 24px 24px; background-image: radial-gradient(circle at 1px 1px, #ffffff 1px, transparent 1px);"></div>
+    <div class="glow-bg"></div>
   </div>
-</section>
 
-<section id="projects" class="border-t border-white/10">
-  <div class="max-w-7xl mx-auto px-4 py-14">
-    <div class="flex items-end justify-between gap-4">
-      <h2 class="text-2xl sm:text-3xl font-bold">Featured Projects</h2>
-    </div>
-
-    <div class="mt-8 grid gap-6 sm:grid-cols-2 xl:grid-cols-3">
-      <!-- Yllabs Connect -->
-      <a href="#" class="block border border-white/10 rounded-3xl p-6 hover-card bg-white/5">
-        <div class="flex items-center justify-between">
-          <h3 class="font-semibold">Yllabs Connect</h3>
-          <span class="text-xs text-brand bg-brand/10 px-2 py-0.5 rounded">Invite</span>
-        </div>
-        <p class="mt-2 text-sm text-white/70">
-          Join our Discord and connect with our community.
-        </p>
+  <header class="sticky top-0 z-20 backdrop-blur bg-brand-dark/70 border-b border-white/10">
+    <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
+      <a href="#home" class="font-semibold tracking-tight text-white flex items-center gap-2">
+        <span class="inline-block w-2.5 h-2.5 rounded-full bg-brand shadow-glow"></span>
+        Logan
       </a>
-
-      <!-- Nexa-Core.net -->
-      <div class="border border-white/10 rounded-3xl p-6 hover-card bg-white/5">
-        <div class="flex items-center justify-between">
-          <h3 class="font-semibold">Nexa-Core.net</h3>
-          <span class="text-xs text-white/70 bg-white/10 px-2 py-0.5 rounded">Coming Soon</span>
-        </div>
-        <p class="mt-2 text-sm text-white/70">
-          A placeholder project for upcoming features.
-        </p>
-      </div>
+      <nav class="hidden sm:flex items-center gap-6 text-sm">
+        <a class="hover:text-white/100 text-white/70" href="#projects">Projects</a>
+        <a class="hover:text-white/100 text-white/70" href="#skills">Skills</a>
+        <a class="hover:text-white/100 text-white/70" href="#about">About</a>
+        <a class="hover:text-white/100 text-white/70" href="/blog">Blog</a>
+      </nav>
     </div>
-  </div>
-</section>
+  </header>
 
-<section id="skills" class="border-t border-white/10">
-  <div class="max-w-6xl mx-auto px-4 py-14">
-    <h2 class="text-2xl sm:text-3xl font-bold">Core Skills</h2>
-    <p class="text-white/70 mt-2">The stack I use most days.</p>
-
-    <div class="mt-8 grid sm:grid-cols-2 gap-8">
-      <div class="space-y-6">
+  <section id="home" class="relative">
+    <div class="max-w-6xl mx-auto px-4 pt-14 pb-16 sm:pt-20 sm:pb-24">
+      <div class="grid md:grid-cols-2 items-center gap-10">
         <div>
-          <div class="flex justify-between text-sm"><span>JavaScript</span><span>Advanced</span></div>
-          <div class="h-2 bg-white/10 rounded">
-            <div class="h-2 bg-brand rounded" style="width:90%"></div>
+          <h1 class="text-3xl sm:text-5xl md:text-6xl font-extrabold tracking-tight leading-tight text-white">
+            Hi, I'm <span class="text-brand">Logan</span> - I build bots, websites, dashboards & ER:LC tools.
+          </h1>
+          <p class="mt-4 text-white/70 leading-relaxed">
+            Hello, my name is Logan. I am a small time developer and company owner with the passion of creating a fully functioning community based off of Clean and modern UI, technology, and software.
+          </p>
+          <div class="mt-6 flex flex-wrap items-center gap-3">
+            <a href="#projects" class="rounded-xl px-4 py-2 bg-white text-black font-semibold hover:opacity-90">See Projects</a>
+          </div>
+          <div class="mt-6 flex items-center gap-4 text-sm text-white/60">
+            <div class="flex items-center gap-2">
+              <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+              <span>Building cool stuff</span>
+            </div>
           </div>
         </div>
-        <div>
-          <div class="flex justify-between text-sm"><span>Python (Disnake)</span><span>Advanced</span></div>
-          <div class="h-2 bg-white/10 rounded">
-            <div class="h-2 bg-brand rounded" style="width:95%"></div>
+        <div class="relative flex items-center justify-center md:justify-end">
+          <div class="w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 rounded-2xl border border-white/20 ring-1 ring-white/10 shadow-glow overflow-hidden">
+            <img src="https://cdn.discordapp.com/attachments/1437017654841049274/1438162904657563868/image.png" alt="Logan avatar" class="w-full h-full object-cover" onerror="this.style.display='none'">
           </div>
+          <div class="absolute bottom-2 right-2 bg-brand/20 text-brand rounded-lg px-3 py-1.5 text-sm border border-brand/40">#Python #Disnake #JavaScript</div>
         </div>
-      </div>
-      <div class="space-y-3 text-sm text-white/70">
-        <div class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-brand rounded-full"></span> Discord bot architecture, sharding, and dashboards</div>
-        <div class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-brand rounded-full"></span> Clean UI/UX with Tailwind + micro-animations</div>
-        <div class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-brand rounded-full"></span> ER:LC API integrations & server tools</div>
-        <div class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-brand rounded-full"></span> Fast deployment & modern architecture</div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<section id="about" class="border-t border-white/10">
-  <div class="max-w-6xl mx-auto px-4 py-14">
-    <div class="grid lg:grid-cols-3 gap-8 items-start">
-      <div class="lg:col-span-2">
-        <h2 class="text-2xl sm:text-3xl font-bold">About</h2>
-        <p class="mt-3 text-white/70 leading-relaxed">
-          I'm Logan, a hands-on builder with 4 years of coding experience who ships practical tools for communities and creators. I love turning messy ideas into reliable systems with strong UX.
-        </p>
-        <div class="mt-6 grid sm:grid-cols-2 gap-4">
-          <div class="rounded-xl border border-white/10 p-4 bg-white/5">
-            <div class="text-2xl font-bold">4 yrs</div>
-            <div class="text-sm text-white/60">coding experience</div>
+  <section id="projects" class="border-t border-white/10">
+    <div class="max-w-7xl mx-auto px-4 py-14">
+      <div class="flex items-end justify-between gap-4">
+        <h2 class="text-2xl sm:text-3xl font-bold">Featured Projects</h2>
+      </div>
+
+      <div class="mt-8 grid gap-6 sm:grid-cols-2 xl:grid-cols-3">
+        <!-- Yllabs Project -->
+        <a href="https://yllabs.xyz/" class="block border border-white/10 rounded-3xl p-6 hover-card bg-white/5">
+          <div class="flex items-center justify-between">
+            <h3 class="font-semibold">Yllabs</h3>
+            <span class="text-xs text-brand bg-brand/10 px-2 py-0.5 rounded">Live</span>
           </div>
-          <div class="rounded-xl border border-white/10 p-4 bg-white/5">
-            <div class="text-2xl font-bold">24/7</div>
-            <div class="text-sm text-white/60">uptime targets</div>
+          <p class="mt-2 text-sm text-white/70">
+            A fully functioning community & development hub.
+          </p>
+          <img src="https://via.placeholder.com/400x200.png?text=Yllabs+Logo" alt="Yllabs Logo" class="mt-4 w-full h-48 sm:h-60 lg:h-72 rounded-2xl object-cover border border-white/10" loading="lazy" decoding="async">
+        </a>
+
+        <!-- Nexa-Core Project -->
+        <div class="border border-white/10 rounded-3xl p-6 hover-card bg-white/5">
+          <div class="flex items-center justify-between">
+            <h3 class="font-semibold">Nexa-Core</h3>
+            <span class="text-xs text-white/70 bg-white/10 px-2 py-0.5 rounded">Coming Soon</span>
           </div>
+          <p class="mt-2 text-sm text-white/70">
+            Future project placeholder.
+          </p>
+          <img src="https://via.placeholder.com/400x200.png?text=Nexa-Core+Logo" alt="Nexa-Core Logo" class="mt-4 w-full h-48 sm:h-60 lg:h-72 rounded-2xl object-cover border border-white/10" loading="lazy" decoding="async">
         </div>
       </div>
-      <aside class="space-y-3 text-sm text-white/70">
-        <div class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-brand rounded-full"></span> Based on the East Coast (ET)</div>
-        <div class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-brand rounded-full"></span> Open to collaborations &amp; commissions</div>
-        <div class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-brand rounded-full"></span> Preferred stack: JavaScript, Python (Disnake)</div>
-      </aside>
     </div>
-  </div>
-</section>
+  </section>
+
+  <section id="skills" class="border-t border-white/10">
+    <div class="max-w-6xl mx-auto px-4 py-14">
+      <h2 class="text-2xl sm:text-3xl font-bold">Core Skills</h2>
+      <p class="text-white/70 mt-2">The stack I use most days.</p>
+
+      <div class="mt-8 grid sm:grid-cols-2 gap-8">
+        <div class="space-y-6">
+          <div>
+            <div class="flex justify-between text-sm"><span>Python (Disnake, Flask)</span><span>Advanced</span></div>
+            <div class="h-2 bg-white/10 rounded">
+              <div class="h-2 bg-brand rounded" style="width:95%"></div>
+            </div>
+          </div>
+          <div>
+            <div class="flex justify-between text-sm"><span>JavaScript (Node.js, Web)</span><span>Advanced</span></div>
+            <div class="h-2 bg-white/10 rounded">
+              <div class="h-2 bg-brand rounded" style="width:90%"></div>
+            </div>
+          </div>
+        </div>
+        <div class="space-y-3 text-sm text-white/70">
+          <div class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-brand rounded-full"></span> ER:LC API integrations & server tools</div>
+          <div class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-brand rounded-full"></span> Discord bot architecture, sharding, and dashboards</div>
+          <div class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-brand rounded-full"></span> Caddy reverse proxy & Ubuntu server setup</div>
+          <div class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-brand rounded-full"></span> Clean UI/UX with Tailwind + micro-animations</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="about" class="border-t border-white/10">
+    <div class="max-w-6xl mx-auto px-4 py-14">
+      <div class="grid lg:grid-cols-3 gap-8 items-start">
+        <div class="lg:col-span-2">
+          <h2 class="text-2xl sm:text-3xl font-bold">About</h2>
+          <p class="mt-3 text-white/70 leading-relaxed">
+            Hello, my name is Logan. I am a small time developer and company owner with the passion of creating a fully functioning community based off of Clean and modern UI, technology, and software.
+          </p>
+          <div class="mt-6 grid sm:grid-cols-2 gap-4">
+            <div class="rounded-xl border border-white/10 p-4 bg-white/5">
+              <div class="text-2xl font-bold">4 yrs</div>
+              <div class="text-sm text-white/60">coding experience</div>
+            </div>
+            <div class="rounded-xl border border-white/10 p-4 bg-white/5">
+              <div class="text-2xl font-bold">24/7</div>
+              <div class="text-sm text-white/60">uptime targets</div>
+            </div>
+          </div>
+        </div>
+        <aside class="space-y-3 text-sm text-white/70">
+          <div class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-brand rounded-full"></span> Based on the East Coast (ET)</div>
+          <div class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-brand rounded-full"></span> Open to collaborations & commissions</div>
+          <div class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-brand rounded-full"></span> Preferred stack: Python using disnake, JavaScript</div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <footer class="border-t border-white/10">
+    <div class="max-w-6xl mx-auto px-4 py-8 text-sm text-white/60 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div> <span id="y">2025</span> YL labs | Made with <3 by Toga</div>
+      <div class="flex items-center gap-4">
+        <a href="https://yllabs.xyz/" class="hover:text-white">Yllabs</a>
+        <a href="#home" class="hover:text-white">Back to top</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
