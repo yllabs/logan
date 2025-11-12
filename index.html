@@ -5,7 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Logan <3</title>
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Noto+Sans+JP:wght@700&display=swap');
+    /* ✅ Clean import (removed unused JP font) */
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
 
     * {
       margin: 0;
@@ -38,6 +39,13 @@
       object-fit: cover;
       box-shadow: 0 0 30px rgba(255, 90, 150, 0.7);
       animation: zoomIn 1.5s ease-in-out;
+      transition: all 0.3s ease-in-out;
+    }
+
+    /* ✅ Subtle hover glow */
+    .pfp:hover {
+      box-shadow: 0 0 40px rgba(255, 90, 150, 1);
+      transform: scale(1.03);
     }
 
     .overlay-text {
@@ -50,7 +58,6 @@
       color: #fff;
       text-shadow: 0 0 15px #ff90b5, 0 0 30px #ff5d8f;
       animation: slideDown 1.2s ease-in-out;
-      font-family: 'Noto Sans JP', sans-serif;
     }
 
     .quote {
@@ -66,6 +73,33 @@
       bottom: 20px;
       font-size: 0.9rem;
       color: rgba(255,255,255,0.6);
+    }
+
+    /* ✅ Updated Play Button for fade-in animation */
+    #playButton {
+      position: absolute;
+      bottom: 80px;
+      background: rgba(255, 93, 143, 0.9);
+      border: none;
+      color: white;
+      padding: 10px 25px;
+      border-radius: 25px;
+      font-size: 1rem;
+      cursor: pointer;
+      box-shadow: 0 0 15px #ff5d8f;
+      opacity: 0;
+      display: none;
+      transition: opacity 0.5s ease, transform 0.3s ease;
+    }
+
+    #playButton.show {
+      display: inline-block;
+      opacity: 1;
+    }
+
+    #playButton:hover {
+      background: rgba(255, 93, 143, 1);
+      transform: scale(1.05);
     }
 
     @keyframes fadeIn {
@@ -88,25 +122,6 @@
       to {opacity: 1; transform: translateY(0);}
     }
 
-    #playButton {
-      position: absolute;
-      bottom: 80px;
-      background: rgba(255, 93, 143, 0.9);
-      border: none;
-      color: white;
-      padding: 10px 25px;
-      border-radius: 25px;
-      font-size: 1rem;
-      cursor: pointer;
-      box-shadow: 0 0 15px #ff5d8f;
-      display: none;
-      transition: all 0.3s ease;
-    }
-
-    #playButton:hover {
-      background: rgba(255, 93, 143, 1);
-      transform: scale(1.05);
-    }
   </style>
 </head>
 <body>
@@ -154,18 +169,21 @@
       }, 100);
     }
 
-    // Attempt autoplay
+    // Try autoplay, otherwise show button smoothly
     bgMusic.play().then(() => {
       fadeInAudio(bgMusic);
     }).catch(() => {
-      document.getElementById("playButton").style.display = "inline-block";
+      const btn = document.getElementById("playButton");
+      btn.style.display = "inline-block";
+      setTimeout(() => btn.classList.add("show"), 10);
     });
 
-    // Fallback play button
+    // Fallback manual play
     document.getElementById("playButton").addEventListener("click", () => {
       bgMusic.play();
       fadeInAudio(bgMusic);
-      document.getElementById("playButton").style.display = "none";
+      document.getElementById("playButton").classList.remove("show");
+      setTimeout(() => document.getElementById("playButton").style.display = "none", 500);
     });
   </script>
 </body>
