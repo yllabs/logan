@@ -1,184 +1,128 @@
-<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Logan</title>
-  <style>
-    /* Fonts */
-    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Blue51410.dev</title>
+  <meta name="description" content="Hi im blue51410 I like to code!">
+  <meta name="theme-color" content="#3aa3ff">
 
-    /* Reset */
-    *{box-sizing:border-box;margin:0;padding:0}
-
-    /* Page */
-    html,body{
-      height:100%;
-      background: radial-gradient(circle at center, #ff5d8f 10%, #140014 90%);
-      font-family: "Montserrat", sans-serif;
-      color:#fff;
-    }
-
-    /* Outer wrapper keeps things centered and prevents squashing */
-    .stage {
-      min-height:100vh;                 /* always fill viewport */
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      padding:4vh 5vw;                  /* breathing room on small screens */
-      text-align:center;
-    }
-
-    /* Main column that NEVER squashes items */
-    .card {
-      display:flex;
-      flex-direction:column;
-      align-items:center;
-      gap: clamp(12px, 2.5vh, 28px);   /* responsive spacing between items */
-      width: min(900px, 92vw);          /* keeps content centered and constrained */
-      margin-inline:auto;
-      padding: 2vh 2vw;
-      /* allow the card room to breathe — no shrinking of children */
-    }
-
-    /* Title */
-    .title{
-      font-weight:700;
-      font-size: clamp(28px, 5.2vw, 48px); /* responsive size */
-      line-height:1;
-      text-shadow: 0 0 15px #ff90b5, 0 0 30px #ff5d8f;
-      margin-top: 2vh;
-    }
-
-    /* PFP: never shrinks, always keeps aspect */
-    .pfp {
-      width: clamp(160px, 22vw, 260px);
-      height: auto;                     /* let width govern height */
-      aspect-ratio: 1/1;
-      border-radius:50%;
-      border:4px solid #fff;
-      object-fit:cover;
-      box-shadow: 0 0 30px rgba(255,90,150,0.7);
-      flex-shrink:0;                    /* crucial — prevents squashing */
-      transition: transform .28s ease, box-shadow .28s ease;
-    }
-    .pfp:hover{ transform: scale(1.03); box-shadow:0 0 40px rgba(255,90,150,1); }
-
-    /* Quote + credits */
-    .quote {
-      font-size: clamp(14px, 2.2vw, 20px);
-      color: #ffeaf1;
-      text-shadow: 0 0 8px #ff99c4;
-      max-width: 760px;
-      margin-top: 0.5vh;
-    }
-    .credits {
-      color: rgba(255,255,255,0.65);
-      font-size: clamp(12px, 1.6vw, 15px);
-    }
-
-    /* Fixed play button in bottom-left so it never overlaps center content */
-    #playButton {
-      position: fixed;
-      left: 18px;
-      bottom: 18px;
-      z-index: 50;
-      background: rgba(255,93,143,0.92);
-      border: none;
-      color: white;
-      padding: 12px 18px;
-      border-radius: 12px;
-      font-size: 14px;
-      cursor: pointer;
-      box-shadow: 0 8px 24px rgba(10,10,10,0.25), 0 0 15px rgba(255,93,143,0.6);
-      opacity: 0;
-      transform: translateY(6px);
-      transition: opacity .45s ease, transform .28s ease;
-    }
-    #playButton.show { opacity:1; transform: translateY(0); }
-    #playButton:hover { transform: translateY(-3px) scale(1.02); }
-
-    /* Small screens: slightly reduce spacing */
-    @media (max-width:420px){
-      .card{ gap:14px; padding: 2vh 3vw; }
-      .title{ margin-top:1vh; }
-    }
-  </style>
 </head>
-<body>
-  <div class="stage">
-    <div class="card" role="main" aria-labelledby="title">
-      <div id="title" class="title">Logan</div>
-
-      <!-- Profile image: never squashed due to flex-shrink:0 and aspect-ratio -->
-      <img id="pfp" class="pfp" alt="Logan's profile picture" />
-
-      <!-- Credits & quote: centered and below image, won't push image up -->
-      <div class="credits">Proud Owner at YL Labs Active Developer and Database User</div>
-      <p id="quote" class="quote" aria-live="polite"></p>
+<section id="home" class="relative">
+  <div class="max-w-6xl mx-auto px-4 pt-14 pb-16 sm:pt-20 sm:pb-24">
+    <div class="grid md:grid-cols-2 items-center gap-10">
+      <div>
+        <h1 class="text-3xl sm:text-5xl md:text-6xl font-extrabold tracking-tight leading-tight text-white">
+          Hello, my name is <span class="text-brand">Logan</span>.
+        </h1>
+        <p class="mt-4 text-white/70 leading-relaxed">
+          I am a small time developer and company owner with the passion of creating a fully functioning community based off of Clean and modern UI, technology, and software.
+        </p>
+        <div class="mt-6 flex flex-wrap items-center gap-3">
+          <a href="#projects" class="rounded-xl px-4 py-2 bg-white text-black font-semibold hover:opacity-90">See Projects</a>
+        </div>
+        <div class="mt-6 flex items-center gap-4 text-sm text-white/60">
+          <div class="flex items-center gap-2">
+            <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+            <span>Building cool stuff</span>
+          </div>
+        </div>
+      </div>
+      <div class="relative flex items-center justify-center md:justify-end">
+        <div class="w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 rounded-2xl border border-white/20 ring-1 ring-white/10 shadow-glow overflow-hidden">
+          <img src="YOUR_PFP_URL" alt="Logan avatar" class="w-full h-full object-cover" onerror="this.style.display='none'">
+        </div>
+        <div class="absolute bottom-2 right-2 bg-brand/20 text-brand rounded-lg px-3 py-1.5 text-sm border border-brand/40">#JavaScript #Python</div>
+      </div>
     </div>
   </div>
+</section>
 
-  <!-- Fixed music play button (bottom-left): safe from overlapping -->
-  <button id="playButton" aria-pressed="false">▶ Play Music</button>
+<section id="projects" class="border-t border-white/10">
+  <div class="max-w-7xl mx-auto px-4 py-14">
+    <div class="flex items-end justify-between gap-4">
+      <h2 class="text-2xl sm:text-3xl font-bold">Featured Projects</h2>
+    </div>
 
-  <script>
-    // ---------- CONFIG ----------
-    const PFP_CDN = "https://cdn.discordapp.com/attachments/1437017654841049274/1438162904657563868/image.png?ex=6915e114&is=69148f94&hm=bd84350ebd3b2c0d1243eee16fbf8ef419c77cc3f3fcbe5610f2dd4115515414&";
-    const MUSIC_CDN = "https://cdn.discordapp.com/attachments/1437017654841049274/1438152084670251138/Juice_WRLD_-_Flaws_and_Sins_Official_Audio-yt.savetube.me.mp3";
-    const quotes = [
-      "She ripped my heart out.",
-      "We’re gonna build a wall.",
-      "The only thing we have to fear is fear itself."
-    ];
-    // ----------------------------
+    <div class="mt-8 grid gap-6 sm:grid-cols-2 xl:grid-cols-3">
+      <!-- Yllabs Connect -->
+      <a href="#" class="block border border-white/10 rounded-3xl p-6 hover-card bg-white/5">
+        <div class="flex items-center justify-between">
+          <h3 class="font-semibold">Yllabs Connect</h3>
+          <span class="text-xs text-brand bg-brand/10 px-2 py-0.5 rounded">Invite</span>
+        </div>
+        <p class="mt-2 text-sm text-white/70">
+          Join our Discord and connect with our community.
+        </p>
+      </a>
 
-    // Put PFP and a random quote
-    document.getElementById('pfp').src = PFP_CDN;
-    document.getElementById('quote').textContent = quotes[Math.floor(Math.random()*quotes.length)];
+      <!-- Nexa-Core.net -->
+      <div class="border border-white/10 rounded-3xl p-6 hover-card bg-white/5">
+        <div class="flex items-center justify-between">
+          <h3 class="font-semibold">Nexa-Core.net</h3>
+          <span class="text-xs text-white/70 bg-white/10 px-2 py-0.5 rounded">Coming Soon</span>
+        </div>
+        <p class="mt-2 text-sm text-white/70">
+          A placeholder project for upcoming features.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
 
-    // Audio (with fade-in)
-    const bg = new Audio(MUSIC_CDN);
-    bg.loop = true;
-    bg.volume = 0;
+<section id="skills" class="border-t border-white/10">
+  <div class="max-w-6xl mx-auto px-4 py-14">
+    <h2 class="text-2xl sm:text-3xl font-bold">Core Skills</h2>
+    <p class="text-white/70 mt-2">The stack I use most days.</p>
 
-    function fadeInAudio(audio, target=0.45, duration=3500){
-      const steps = Math.max(6, Math.round(duration/120));
-      const step = target / steps;
-      let i = 0;
-      const t = setInterval(()=>{
-        i++;
-        audio.volume = Math.min(target, +(audio.volume + step).toFixed(3));
-        if(i >= steps) clearInterval(t);
-      }, duration/steps);
-    }
+    <div class="mt-8 grid sm:grid-cols-2 gap-8">
+      <div class="space-y-6">
+        <div>
+          <div class="flex justify-between text-sm"><span>JavaScript</span><span>Advanced</span></div>
+          <div class="h-2 bg-white/10 rounded">
+            <div class="h-2 bg-brand rounded" style="width:90%"></div>
+          </div>
+        </div>
+        <div>
+          <div class="flex justify-between text-sm"><span>Python (Disnake)</span><span>Advanced</span></div>
+          <div class="h-2 bg-white/10 rounded">
+            <div class="h-2 bg-brand rounded" style="width:95%"></div>
+          </div>
+        </div>
+      </div>
+      <div class="space-y-3 text-sm text-white/70">
+        <div class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-brand rounded-full"></span> Discord bot architecture, sharding, and dashboards</div>
+        <div class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-brand rounded-full"></span> Clean UI/UX with Tailwind + micro-animations</div>
+        <div class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-brand rounded-full"></span> ER:LC API integrations & server tools</div>
+        <div class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-brand rounded-full"></span> Fast deployment & modern architecture</div>
+      </div>
+    </div>
+  </div>
+</section>
 
-    const playBtn = document.getElementById('playButton');
-
-    // Try autoplay; if blocked, show fixed bottom-left button
-    bg.play().then(()=>{
-      fadeInAudio(bg);
-    }).catch(()=>{
-      // show button smoothly
-      playBtn.classList.add('show');
-      playBtn.setAttribute('aria-hidden','false');
-    });
-
-    // Button toggles playback and hides itself when pressed
-    playBtn.addEventListener('click', async ()=>{
-      try{
-        await bg.play();
-        fadeInAudio(bg);
-        playBtn.classList.remove('show');
-        playBtn.setAttribute('aria-hidden','true');
-      }catch(e){
-        console.warn('Playback failed:', e);
-      }
-    });
-
-    // Safety: if element sizes change unexpectedly, prevent image shrink
-    // (extra guard)
-    document.getElementById('pfp').style.flexShrink = '0';
-  </script>
-</body>
-</html>
+<section id="about" class="border-t border-white/10">
+  <div class="max-w-6xl mx-auto px-4 py-14">
+    <div class="grid lg:grid-cols-3 gap-8 items-start">
+      <div class="lg:col-span-2">
+        <h2 class="text-2xl sm:text-3xl font-bold">About</h2>
+        <p class="mt-3 text-white/70 leading-relaxed">
+          I'm Logan, a hands-on builder with 4 years of coding experience who ships practical tools for communities and creators. I love turning messy ideas into reliable systems with strong UX.
+        </p>
+        <div class="mt-6 grid sm:grid-cols-2 gap-4">
+          <div class="rounded-xl border border-white/10 p-4 bg-white/5">
+            <div class="text-2xl font-bold">4 yrs</div>
+            <div class="text-sm text-white/60">coding experience</div>
+          </div>
+          <div class="rounded-xl border border-white/10 p-4 bg-white/5">
+            <div class="text-2xl font-bold">24/7</div>
+            <div class="text-sm text-white/60">uptime targets</div>
+          </div>
+        </div>
+      </div>
+      <aside class="space-y-3 text-sm text-white/70">
+        <div class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-brand rounded-full"></span> Based on the East Coast (ET)</div>
+        <div class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-brand rounded-full"></span> Open to collaborations &amp; commissions</div>
+        <div class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-brand rounded-full"></span> Preferred stack: JavaScript, Python (Disnake)</div>
+      </aside>
+    </div>
+  </div>
+</section>
