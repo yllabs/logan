@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Toga <3</title>
+  <title>Logan <3</title>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Noto+Sans+JP:wght@700&display=swap');
 
@@ -91,7 +91,6 @@
       to {opacity: 1; transform: translateY(0);}
     }
 
-    /* Play button (appears if autoplay fails) */
     #playButton {
       position: absolute;
       bottom: 80px;
@@ -124,15 +123,15 @@
 
   <script>
     /** ---------- CONFIGURABLE CDN LINKS ---------- **/
-    const PFP_CDN = "https://cdn.discordapp.com/attachments/1437017654841049274/1438152045885394994/image.png?ex=6915d6f7&is=69148577&hm=6fbb466f87c928201e0ede7a87178f58e36fa3654da8d1db982cd6105ffe1977&";
-    const MUSIC_CDN = "https://cdn.discordapp.com/attachments/1437017654841049274/1438152084670251138/Juice_WRLD_-_Flaws_and_Sins_Official_Audio-yt.savetube.me.mp3?ex=6915d700&is=69148580&hm=bddb560338baa7b83be55369afa2ae2773a907e8fe6d68855ef5560e1d840fbc&";
-    const BG_CDN = "https://cdn.pixabay.com/photo/2016/11/29/04/17/abstract-1869402_1280.jpg"; // <-- background image
+    const PFP_CDN = "https://cdn.discordapp.com/attachments/1437017654841049274/1438152045885394994/image.png";
+    const MUSIC_CDN = "https://cdn.discordapp.com/attachments/1437017654841049274/1438152084670251138/Juice_WRLD_-_Flaws_and_Sins_Official_Audio-yt.savetube.me.mp3";
+    const BG_CDN = "https://cdn.pixabay.com/photo/2016/11/29/04/17/abstract-1869402_1280.jpg"; 
     /** -------------------------------------------- **/
 
     const quotes = [
-      “She ripped my heart out”
-      “We’re gonna build a wall”
-      "The only thing we have to fear is fear itself"
+      "She ripped my heart out.",
+      "We’re gonna build a wall.",
+      "The only thing we have to fear is fear itself."
     ];
 
     // Apply background image
@@ -162,7 +161,7 @@
       }, 100);
     }
 
-    // Attempt autoplay
+    // Try autoplay (most browsers block Discord-hosted MP3s)
     bgMusic.play().then(() => {
       fadeInAudio(bgMusic);
     }).catch(() => {
