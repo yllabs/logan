@@ -22,9 +22,6 @@
       overflow: hidden;
       color: #fff;
       font-family: 'Montserrat', sans-serif;
-      background-size: cover;
-      background-position: center;
-      transition: background 1.5s ease-in-out;
     }
 
     .intro-container {
@@ -125,7 +122,6 @@
     /** ---------- CONFIGURABLE CDN LINKS ---------- **/
     const PFP_CDN = "https://cdn.discordapp.com/attachments/1437017654841049274/1438152045885394994/image.png";
     const MUSIC_CDN = "https://cdn.discordapp.com/attachments/1437017654841049274/1438152084670251138/Juice_WRLD_-_Flaws_and_Sins_Official_Audio-yt.savetube.me.mp3";
-    const BG_CDN = "https://cdn.pixabay.com/photo/2016/11/29/04/17/abstract-1869402_1280.jpg"; 
     /** -------------------------------------------- **/
 
     const quotes = [
@@ -133,9 +129,6 @@
       "We’re gonna build a wall.",
       "The only thing we have to fear is fear itself."
     ];
-
-    // Apply background image
-    document.body.style.backgroundImage = `url('${BG_CDN}')`;
 
     // Random quote
     const randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
@@ -161,7 +154,7 @@
       }, 100);
     }
 
-    // Try autoplay (most browsers block Discord-hosted MP3s)
+    // Attempt autoplay
     bgMusic.play().then(() => {
       fadeInAudio(bgMusic);
     }).catch(() => {
